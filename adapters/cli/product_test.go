@@ -33,25 +33,25 @@ func TestRun(t *testing.T) {
 
 	resultExpected := fmt.Sprintf("Product ID: %s with the name %s has been created with the price %f and status %s.",
 		id, name, price, status)
-	result, err := cli.Run(service, "create", "", name, price, "")
+	result, err := cli.Run(service, "create", "", name, price)
 	require.Nil(t, err)
 	require.Equal(t, resultExpected, result)
 
 	resultExpected = fmt.Sprintf("Product %s has been enabled.",
 		name)
-	result, err = cli.Run(service, "enable", id, "", 0, "")
+	result, err = cli.Run(service, "enable", id, "", 0)
 	require.Nil(t, err)
 	require.Equal(t, resultExpected, result)
 
 	resultExpected = fmt.Sprintf("Product %s has been disabled.",
 		name)
-	result, err = cli.Run(service, "disable", id, "", 0, "")
+	result, err = cli.Run(service, "disable", id, "", 0)
 	require.Nil(t, err)
 	require.Equal(t, resultExpected, result)
 
 	resultExpected = fmt.Sprintf("Product ID: %s\nName: %s\nPrice: %f\nStatus: %s",
 		id, name, price, status)
-	result, err = cli.Run(service, "anything cause in default it do a Get", id, "", 0, "")
+	result, err = cli.Run(service, "anything cause in default it do a Get", id, "", 0)
 	require.Nil(t, err)
 	require.Equal(t, resultExpected, result)
 }

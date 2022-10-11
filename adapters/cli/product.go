@@ -6,7 +6,7 @@ import (
 	"github.com/brunoan99/hexagonal-arch/application"
 )
 
-func Run(service application.IProductService, action string, id string, name string, price float64, status string) (string, error) {
+func Run(service application.IProductService, action string, id string, name string, price float64) (string, error) {
 	var result = ""
 	switch action {
 	case "create":
