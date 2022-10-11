@@ -5,9 +5,7 @@ type ProductService struct {
 }
 
 func NewProductService(persistence IProductPersistence) *ProductService {
-	return &ProductService{
-		Persistence: persistence,
-	}
+	return &ProductService{Persistence: persistence}
 }
 
 func (s *ProductService) Get(id string) (IProduct, error) {
@@ -40,7 +38,7 @@ func (s *ProductService) Enable(product IProduct) (IProduct, error) {
 	}
 	result, err := s.Persistence.Save(product)
 	if err != nil {
-		return &Product{}, nil
+		return &Product{}, err
 	}
 	return result, nil
 }
@@ -52,7 +50,7 @@ func (s *ProductService) Disable(product IProduct) (IProduct, error) {
 	}
 	result, err := s.Persistence.Save(product)
 	if err != nil {
-		return &Product{}, nil
+		return &Product{}, err
 	}
 	return result, nil
 }
